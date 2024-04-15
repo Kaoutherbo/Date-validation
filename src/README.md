@@ -56,3 +56,4 @@ To run the program:
    ```
 
 The program will output results for both valid and invalid dates, showing whether the dates were successfully created or if exceptions were thrown.
+<img src="./date.png" width="100%" />
