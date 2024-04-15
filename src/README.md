@@ -1,56 +1,58 @@
-# Date Validation Exercise
+# Date Class Exercise
+
+This Java project involves creating a `Date` class to handle date operations with built-in validation for day, month, and leap year scenarios. It also includes a custom exception `DException` to handle invalid dates.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Classes](#classes)
+    - [Date](#date)
+    - [DException](#dexception)
+- [Test Class](#test-class)
+- [How to Run](#how-to-run)
 
 ## Overview
 
-This exercise involves creating a Java program that validates dates and raises exceptions when invalid dates are provided. The program consists of the following components:
+The program defines a `Date` class to handle date-related operations. The class includes:
 
-- `Date` class: Represents a date with attributes `day`, `month`, and `year`.
-- `DException` class: Custom exception class used when an invalid date is provided.
-- `Test` class: Contains a main method to test the `Date` class and handle exceptions.
+- Validation of day and month values based on the provided year.
+- Validation of leap year for the month of February.
+- A constructor that throws a `DException` if the provided date is invalid.
+
+The program also includes a `Test` class to demonstrate the usage of the `Date` class and its exception handling.
 
 ## Classes
 
-### `Date`
+### Date
 
-The `Date` class has the following attributes:
+`Date` is a class representing a date with day, month, and year properties. It includes a constructor that takes day, month, and year as parameters and throws a custom `DException` if the date is invalid. The validation rules are as follows:
 
-- `day`: Represents the day of the month (1-31).
-- `month`: Represents the month of the year (1-12).
-- `year`: Represents the year.
+- The day must be within the valid range for the given month and year.
+- The month must be between 1 and 12.
+- February accounts for leap years when calculating valid day ranges.
 
-The constructor of the `Date` class accepts three parameters (`day`, `month`, and `year`) and throws a `DException` if the provided date is invalid. A date is considered invalid if the day is out of the valid range for the given month and year (taking into account leap years), or if the month is not in the range of 1-12.
+The class contains private methods `getDaysInMonth(int month, int year)` and `isLeapYear(int year)` to assist with date validation.
 
-The `Date` class contains helper methods to determine the number of days in a given month and whether a year is a leap year:
+### DException
 
-- `getDaysInMonth(month, year)`: Returns the number of days in the specified month and year.
-- `isLeapYear(year)`: Determines if the specified year is a leap year.
+`DException` is a custom exception class representing invalid date scenarios. It is thrown by the `Date` class constructor when an invalid date is provided.
 
-### `DException`
+## Test Class
 
-The `DException` class is a custom exception class that extends `Exception`. It is used to signal invalid dates provided to the `Date` constructor.
+The `Test` class demonstrates the usage of the `Date` class and its validation. It creates instances of the `Date` class with valid and invalid dates and tests the exception handling.
 
-### `Test`
-
-The `Test` class contains the `main` method, which tests the `Date` class. It creates instances of `Date` and handles exceptions for invalid dates. Test cases include:
-
-- Valid dates
-- Invalid day for a specific month
-- Invalid month
-- Invalid leap year date
-- Valid leap year date
-
-## How to Run the Program
+## How to Run
 
 To run the program:
 
-1. Compile the `Date.java`, `DException.java`, and `Test.java` files:
-    ```
-    javac Date.java DException.java Test.java
-    ```
+1. Compile the Java files in your project directory:
+   ```
+   javac *.java
+   ```
 
 2. Run the `Test` class:
-    ```
-    java Test
-    ```
+   ```
+   java Test
+   ```
 
-The program will output results of the test cases, including catching exceptions for invalid dates.
+The program will output results for both valid and invalid dates, showing whether the dates were successfully created or if exceptions were thrown.
